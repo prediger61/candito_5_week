@@ -17,6 +17,8 @@ dependencies:
   #Core
   flutter_riverpod: ^2.4.6
   kartal: ^3.5.0
+  flutter_svg: ^2.0.9
+
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +33,4 @@ flutter:
 
   assets:
     - assets/image/
+    - assets/icons/

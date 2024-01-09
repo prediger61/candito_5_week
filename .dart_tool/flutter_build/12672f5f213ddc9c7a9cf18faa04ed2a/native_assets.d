@@ -1,0 +1,1 @@
+ /Users/hasanberkantcevik/development/candito_5_week/.dart_tool/flutter_build/12672f5f213ddc9c7a9cf18faa04ed2a/native_assets.yaml: 

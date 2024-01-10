@@ -1,5 +1,7 @@
 import 'package:candito5_week/product/constants/color_constants.dart';
+import 'package:candito5_week/product/provider/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PrModel extends StatefulWidget {
   const PrModel({super.key});
@@ -9,30 +11,44 @@ class PrModel extends StatefulWidget {
 }
 
 class _PrModelState extends State<PrModel> {
+  late int squat;
+  late int bench;
+  late int deadlift;
+
+  @override
+  void initState() {
+    final userModel = Provider.of<UserProvider>(context, listen: false);
+    squat = userModel.squat;
+    bench = userModel.bench;
+    deadlift = userModel.deadlift;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4),
       decoration: const BoxDecoration(
-          color: ColorConstants.systemBlackDark,
-          borderRadius: BorderRadiusDirectional.all(Radius.circular(10))),
+        color: ColorConstants.systemBlackDark,
+        borderRadius: BorderRadiusDirectional.all(Radius.circular(10)),
+      ),
       child: Row(
         children: [
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Deadlift',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               Text(
-                '200',
-                style: TextStyle(fontSize: 24, color: Color(0xffD34657)),
+                deadlift.toString(),
+                style: const TextStyle(fontSize: 24, color: Color(0xffD34657)),
               ),
-              Text(
+              const Text(
                 'Bench Press',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -40,10 +56,10 @@ class _PrModelState extends State<PrModel> {
                 ),
               ),
               Text(
-                '200',
-                style: TextStyle(fontSize: 24, color: Color(0xffD34657)),
+                bench.toString(),
+                style: const TextStyle(fontSize: 24, color: Color(0xffD34657)),
               ),
-              Text(
+              const Text(
                 'Squat',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -51,12 +67,12 @@ class _PrModelState extends State<PrModel> {
                 ),
               ),
               Text(
-                '200',
-                style: TextStyle(fontSize: 24, color: Color(0xffD34657)),
+                squat.toString(),
+                style: const TextStyle(fontSize: 24, color: Color(0xffD34657)),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 100,
           ),
           Image.asset('assets/icons/Circle.png'),

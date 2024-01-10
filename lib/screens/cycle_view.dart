@@ -14,45 +14,61 @@ class _CycleViewState extends State<CycleView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Text('Cycle'),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.14,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Column(children: [
-                        Text(
-                          (index + 1).toString(),
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            const Text('Cycle'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.14,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Text(
+                              (index + 1).toString(),
+                            ),
+                            Image.asset('assets/icons/circle_week.png'),
+                          ],
                         ),
-                        Image.asset('assets/icons/circle_week.png'),
-                      ]),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              )
-            ],
-          ),
-          const Text('Workouts Of This Cycle',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-          const Column(
-            children: [
-              WorkoutModel(),
-              WorkoutModel(),
-              WorkoutModel(),
-              WorkoutModel(),
-              WorkoutModel(),
-            ],
-          )
-        ]),
+              ],
+            ),
+            const Text(
+              'Workouts Of This Cycle',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+            ),
+            const Column(
+              children: [
+                WorkoutModel(
+                  index: 0,
+                ),
+                WorkoutModel(
+                  index: 1,
+                ),
+                WorkoutModel(
+                  index: 2,
+                ),
+                WorkoutModel(
+                  index: 3,
+                ),
+                WorkoutModel(
+                  index: 4,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

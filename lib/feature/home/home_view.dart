@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeView extends StatefulWidget {
+  const HomeView({
+    required this.index,
+    required this.pageController,
+    super.key,
+  });
   final PageController pageController;
   final ValueNotifier<int> index;
-  const HomeView(
-      {super.key, required this.index, required this.pageController});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -21,19 +24,14 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
-              const Text(
-                '9 Nisan 2023',
-                style:
-                    TextStyle(color: ColorConstants.systemGray, fontSize: 12),
-              ),
+              const Spacer(),
               const Text(
                 'Welcome',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
@@ -42,46 +40,56 @@ class _HomeViewState extends State<HomeView> {
                 'Current Maxes',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-              PrModel(),
+              const PrModel(),
               Row(
                 children: [
-                  Spacer(),
-                  Text('Workouts Of This Week',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-                  Spacer(),
+                  const Spacer(),
+                  const Text(
+                    'Workouts Of This Week',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  ),
+                  const Spacer(),
                   TextButton(
-                    child: Text('Show More',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: ColorConstants.appMainColor)),
+                    child: const Text(
+                      'Show More',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: ColorConstants.appMainColor,
+                      ),
+                    ),
                     onPressed: () {
                       widget.index.value = 0;
                       widget.pageController.jumpTo(0);
                     },
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
-              const WorkoutModel(),
-              const WorkoutModel(),
+              const WorkoutModel(
+                index: 0,
+              ),
+              const WorkoutModel(
+                index: 1,
+              ),
               Container(
-                margin: EdgeInsets.all(4),
+                margin: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(
-                    color: ColorConstants.systemBlackDark,
-                    borderRadius:
-                        BorderRadiusDirectional.all(Radius.circular(10))),
+                  color: ColorConstants.systemBlackDark,
+                  borderRadius:
+                      BorderRadiusDirectional.all(Radius.circular(10)),
+                ),
                 child: Center(
                   child: Column(
                     children: [
-                      Text('Tips'),
+                      const Text('Tips'),
                       Container(
                         child: Column(
                           children: [
                             Image.asset('assets/icons/Illu.png'),
-                            Text(
-                                'Show MoreShow MoreShow MoreShow MoreShow MoreShow MoreShow MoreShow MoreShow MoreShow MoreShow s'),
+                            const Text(
+                              ' Proper form is crucial for both safety and performance. Take the time to learn and practice the correct technique for each of the three powerlifting lifts: squat, bench press, and deadlift. Consider working with a coach or experienced lifter to ensure your form is on point.',
+                            ),
                           ],
                         ),
                       ),
